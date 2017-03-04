@@ -4,15 +4,11 @@ var app = app || {};
   app.AppView = Backbone.View.extend({
     el: '#ottol-app',
     initialize: function(){
-      console.log('app view init');
-
       app.OttolRouter.on('route', this.render, this);
 
       this.render();
     },
     render: function(){
-      console.log('app view render');
-      console.log(app.Filter);
       switch (app.Filter) {
         case 'winnumber':
           this.renderWinNumber();
@@ -29,7 +25,7 @@ var app = app || {};
     },
     renderIndex: function(){
       this.$el.html('');
-      console.log('render index');
+
       new app.IndexView();
     }
   });

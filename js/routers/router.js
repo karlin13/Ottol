@@ -10,7 +10,6 @@ var app = app || {};
 			'*filter': 'setFilter'
 		},
     initialize: function(){
-      console.log('router init');
     },
 		setFilter: function (param) {
 			app.Filter = param || '';

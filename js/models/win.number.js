@@ -6,8 +6,6 @@ var app = app || {};
 
   app.WinNumber = Backbone.Model.extend({
     initialize: function(){
-      console.log('model init');
-      console.log('currentTime: '+new Date().getTime());
     },
     defaults: {
       'winNumber': [],
