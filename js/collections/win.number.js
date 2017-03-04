@@ -8,6 +8,9 @@ var app = app || {};
     localStorage: new Store('win-number'),
     initialize: function(){
       console.log('winnumbers init');
+      this.updateWinNumber();
+    },
+    updateWinNumber: function(){
       var storedNumber = this.localStorage.findAll()[0];
       console.log(storedNumber);
       if(!storedNumber){
@@ -16,9 +19,16 @@ var app = app || {};
       }
       else{
         if(this.isExpired(storedNumber)){
-          this.remove(this.at(0));
+          console.log(app.WinNumbers);
           this.create({winNumber: this.genWinNumber(46)});
+          this.localStorage.destroy({id: storedNumber.id});
+          console.log(app.WinNumbers);
+
           console.log('created winnumber');
+        }
+        else{
+          console.log('need to fetch val');
+          this.fetch();
         }
       }
     },
@@ -37,6 +47,9 @@ var app = app || {};
       console.log(model);
 
       let currentTime = new Date().getTime();
+      console.log(model.expired_at);
+      console.log(currentTime);
+      console.log(model.expired_at - currentTime);
 
       return (model.expired_at - currentTime < 0);
     },

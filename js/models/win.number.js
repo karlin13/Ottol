@@ -7,7 +7,7 @@ var app = app || {};
   app.WinNumber = Backbone.Model.extend({
     defaults: {
       'winNumber': [],
-      'expired_at': new Date().getTime() + 60
+      'expired_at': new Date().getTime() + 10000
     }
   });
 })();

@@ -10,6 +10,7 @@ var app = app || {};
       this.$el.append(this.render().el);
     },
     render: function(){
+      app.WinNumbers.updateWinNumber();
       this.$el.html(this.template(app.WinNumbers.at(0).toJSON()));
 
       return this;
