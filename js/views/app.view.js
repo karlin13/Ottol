@@ -6,10 +6,7 @@ var app = app || {};
     initialize: function(){
       console.log('app view init');
 
-      var parentContext = this;
-      app.OttolRouter.on('route', function(){
-        parentContext.render();
-      });
+      app.OttolRouter.on('route', this.render, this);
 
       this.render();
     },
