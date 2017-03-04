@@ -5,7 +5,11 @@ var app = app || {};
     el: '#ottol-app',
     initialize: function(){
       console.log('app view init');
-      app.OttolRouter.on('*all', this.render());
+
+      var parentContext = this;
+      app.OttolRouter.on('route', function(){
+        parentContext.render();
+      });
 
       this.render();
     },
