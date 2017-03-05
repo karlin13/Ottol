@@ -8,9 +8,10 @@ define([
     model: WinNumber,
     localStorage: new Store('win-number'),
     initialize: function(){
+      this.fetch();
     },
     updateWinNumber: function(){
-      var storedNumber = this.localStorage.findAll()[0];
+      var storedNumber = this.at(0);
       if(!storedNumber){
         this.create({winNumber: this.genWinNumber(45), expired_at: this.genExpiredDate(10000)});
       }
@@ -50,7 +51,7 @@ define([
     isExpired: function(model){
       let currentTime = new Date().getTime();
 
-      return (model.expired_at - currentTime < 0);
+      return (model.get('expired_at') - currentTime < 0);
     },
     exists: function(){
 
