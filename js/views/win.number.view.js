@@ -1,19 +1,22 @@
-var app = app || {};
-
-(function(){
-  app.WinNumberView = Backbone.View.extend({
+define([
+  'underscore',
+  'backbone',
+  'collections/win.number',
+  'text!templates/winnumber.html'
+], function(_, Backbone, WinNumbers, WinNumberTpl){
+  return Backbone.View.extend({
     el: '#ottol-app',
-    template: _.template($('#win-number').html()),
+    template: _.template(WinNumberTpl),
     initialize: function(){
       this.$el.html('');
 
       this.$el.append(this.render().el);
     },
     render: function(){
-      app.WinNumbers.updateWinNumber();
-      this.$el.html(this.template(app.WinNumbers.at(0).toJSON()));
+      WinNumbers.updateWinNumber();
+      this.$el.html(this.template(WinNumbers.at(0).toJSON()));
 
       return this;
     }
   });
-})();
+});

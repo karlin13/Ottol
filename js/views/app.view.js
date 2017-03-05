@@ -1,15 +1,18 @@
-var app = app || {};
-
-(function(){
-  app.AppView = Backbone.View.extend({
+define([
+  'backbone',
+  'views/index.view',
+  'views/win.number.view',
+  'common'
+], function(Backbone, IndexView, WinNumberView, Common){
+  return Backbone.View.extend({
     el: '#ottol-app',
     initialize: function(){
-      app.OttolRouter.on('route', this.render, this);
+      Common.Router.on('route', this.render, this);
 
       this.render();
     },
     render: function(){
-      switch (app.Filter) {
+      switch (Common.Filter) {
         case 'winnumber':
           this.renderWinNumber();
           break;
@@ -21,12 +24,12 @@ var app = app || {};
     renderWinNumber: function(){
       this.$el.html('');
 
-      new app.WinNumberView();
+      new WinNumberView();
     },
     renderIndex: function(){
       this.$el.html('');
 
-      new app.IndexView();
+      new IndexView();
     }
   });
-})();
+});

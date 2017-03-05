@@ -1,9 +1,11 @@
-var app = app || {};
-
-(function(){
-  app.IndexView = Backbone.View.extend({
+define([
+  'underscore',
+  'backbone',
+  'text!templates/index.html'
+], function(_, Backbone, IndexTpl){
+  return Backbone.View.extend({
     el: '#ottol-app',
-    template: _.template($('#index').html()),
+    template: _.template(IndexTpl),
     initialize: function(){
       this.$el.html('');
 
@@ -15,4 +17,4 @@ var app = app || {};
       return this;
     }
   });
-})();
+})

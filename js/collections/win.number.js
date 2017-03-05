@@ -1,21 +1,22 @@
-var app = app || {};
-
-(function(){
-  'use strict';
-
-  var WinNumbers =  Backbone.Collection.extend({
-    model: app.WinNumber,
+define([
+  'backbone',
+  'localStorage',
+  'models/win.number',
+  'common'
+], function(Backbone, Store, WinNumber, Common){
+  var WinNumbers = Backbone.Collection.extend({
+    model: WinNumber,
     localStorage: new Store('win-number'),
     initialize: function(){
     },
     updateWinNumber: function(){
       var storedNumber = this.localStorage.findAll()[0];
       if(!storedNumber){
-        this.create({winNumber: this.genWinNumber(45), expired_at: this.getExpiredDate(10000)});
+        this.create({winNumber: this.genWinNumber(45), expired_at: this.genExpiredDate(10000)});
       }
       else{
         if(this.isExpired(storedNumber)){
-          this.create({winNumber: this.genWinNumber(45), expired_at: this.getExpiredDate(10000)});
+          this.create({winNumber: this.genWinNumber(45), expired_at: this.genExpiredDate(10000)});
 
           this.localStorage.destroy({id: storedNumber.id});
           this.remove(storedNumber.id);
@@ -41,10 +42,10 @@ var app = app || {};
 
       return generated;
     },
-    getExpiredDate: function(duration){
+    genExpiredDate: function(duration){
       let currentTimestamp = new Date().getTime();
 
-      return currentTimestamp + duration;
+      return currentTimestamp + Common.NUMBER_DURATION;
     },
     isExpired: function(model){
       let currentTime = new Date().getTime();
@@ -56,5 +57,5 @@ var app = app || {};
     }
   });
 
-  app.WinNumbers = new WinNumbers()
-})();
+  return new WinNumbers();
+});
