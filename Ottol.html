@@ -3,32 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
-    <section id="ottol-app">
-    </section>
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <script src="node_modules/underscore/underscore.js"></script>
     <script src="node_modules/backbone/backbone.js"></script>
     <script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
 
+    <style>
+      label{
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="ottol-app" class="container-fluid text-center">
+    </section>
 
     <script type="text/template" id ="win-number">
       <section id="view-win-number">
-        <label><%= winNumber[0] %></label>
-        <label><%= winNumber[1] %></label>
-        <label><%= winNumber[2] %></label>
-        <label><%= winNumber[3] %></label>
-        <label><%= winNumber[4] %></label>
-        <label><%= winNumber[5] %></label>
+        <label class="col-md-2"><%= winNumber[0] %></label>
+        <label class="col-md-2"><%= winNumber[1] %></label>
+        <label class="col-md-2"><%= winNumber[2] %></label>
+        <label class="col-md-2"><%= winNumber[3] %></label>
+        <label class="col-md-2"><%= winNumber[4] %></label>
+        <label class="col-md-2"><%= winNumber[5] %></label>
       </section>
-      <a href="#/">Back</a>
+      <a href="#/" class="btn btn-default">Back</a>
     </script>
 
     <script type="text/template" id="index">
       <h1>Ottol</h1>
-      <a href="#/winnumber">Number of the Day!</a>
+      <a href="#/winnumber" class="btn btn-default">Number of the Day!</a>
     </script>
 
     <script src="js/models/win.number.js"></script>
