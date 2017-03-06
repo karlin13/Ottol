@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title></title>
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -19,8 +20,11 @@
     </style>
   </head>
   <body>
-    <section id="ottol-app" class="container-fluid text-center">
-    </section>
+    <main id="ottol-app" class="container-fluid text-center">
+      <section id="index-view"></section>
+      <section id="winnumber-view"></section>
+      <a id="toggle-winnumber-view" class="btn btn-default closed">Number of the Day!</a>
+    </main>
 
     <script data-main="js/app" src="node_modules/requirejs/require.js"></script>
   </body>

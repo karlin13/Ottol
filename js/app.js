@@ -29,11 +29,6 @@ require.config({
 require([
 	'backbone',
 	'views/app.view',
-	'routers/router',
-	'common'
-], function(Backbone, AppView, WorkSpace, Common){
-	Common.Router = new WorkSpace();
-	Backbone.history.start();
-
+], function(Backbone, AppView){
 	new AppView();
 });

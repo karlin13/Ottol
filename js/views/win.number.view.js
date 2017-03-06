@@ -5,11 +5,9 @@ define([
   'text!templates/winnumber.html'
 ], function(_, Backbone, WinNumbers, WinNumberTpl){
   return Backbone.View.extend({
-    el: '#ottol-app',
+    el: '#winnumber-view',
     template: _.template(WinNumberTpl),
     initialize: function(){
-      this.$el.html('');
-
       this.$el.append(this.render().el);
     },
     render: function(){

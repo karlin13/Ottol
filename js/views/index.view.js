@@ -4,7 +4,7 @@ define([
   'text!templates/index.html'
 ], function(_, Backbone, IndexTpl){
   return Backbone.View.extend({
-    el: '#ottol-app',
+    el: '#index-view',
     template: _.template(IndexTpl),
     initialize: function(){
       this.$el.html('');

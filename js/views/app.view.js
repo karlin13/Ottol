@@ -2,34 +2,47 @@ define([
   'backbone',
   'views/index.view',
   'views/win.number.view',
-  'common'
-], function(Backbone, IndexView, WinNumberView, Common){
+], function(Backbone, IndexView, WinNumberView){
   return Backbone.View.extend({
     el: '#ottol-app',
+    winNumberView: undefined,
+    indexView: undefined,
     initialize: function(){
-      Common.Router.on('route', this.render, this);
+      this.toggleWinNumberBtn = $('#toggle-winnumber-view');
 
       this.render();
     },
+    events: {
+      'click #toggle-winnumber-view': 'toggleWinNumber'
+    },
     render: function(){
-      switch (Common.Filter) {
-        case 'winnumber':
-          this.renderWinNumber();
-          break;
-        default:
-          this.renderIndex();
-          break;
+      this.renderIndex();
+    },
+    toggleWinNumber: function(){
+      let showingView = this.toggleWinNumberBtn.hasClass("opened");
+
+      if(showingView){
+        this.toggleWinNumberBtn.removeClass("opened");
+        this.toggleWinNumberBtn.addClass("closed");
+
+        this.hideWinNumber();
+      }
+      else{
+        this.toggleWinNumberBtn.removeClass("closed");
+        this.toggleWinNumberBtn.addClass("opened");
+
+        this.renderWinNumber();
       }
     },
     renderWinNumber: function(){
-      this.$el.html('');
-
-      new WinNumberView();
+      this.winNumberView = this.winNumberView || new WinNumberView();
+      return this.winNumberView.render();
+    },
+    hideWinNumber: function(){
+      this.winNumberView.$el.html('');
     },
     renderIndex: function(){
-      this.$el.html('');
-
-      new IndexView();
+      this.indexView = new IndexView();
     }
   });
 });
