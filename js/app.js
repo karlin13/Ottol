@@ -22,7 +22,8 @@ require.config({
 		underscore: "../node_modules/underscore/underscore",
 		backbone: "../node_modules/backbone/backbone",
 		localStorage: "../node_modules/backbone.localstorage/backbone.localStorage",
-		text: '../node_modules/requirejs-text/text'
+		text: '../node_modules/requirejs-text/text',
+		downCount: '../node_modules/downCount/jquery.downCount'
 	}
 });
 

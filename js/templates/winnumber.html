@@ -5,4 +5,53 @@
   <label class="col-md-2"><%= winNumber[3] %></label>
   <label class="col-md-2"><%= winNumber[4] %></label>
   <label class="col-md-2"><%= winNumber[5] %></label>
+
+  <section id='timer'>
+    <h4>Next Number Validation After</h4>
+    <label>
+        <span class="days">00</span>
+        <p class="days_ref">days</p>
+    </label>
+    <label class="seperator">.</label>
+    <label>
+        <span class="hours">00</span>
+        <p class="hours_ref">hours</p>
+    </label>
+    <label class="seperator">:</label>
+    <label>
+        <span class="minutes">00</span>
+        <p class="minutes_ref">minutes</p>
+    </label>
+    <label class="seperator">:</label>
+    <label>
+        <span class="seconds">00</span>
+        <p class="seconds_ref">seconds</p>
+    </label>
+  </section>
+
+  <script class="source" type="text/javascript">
+      var dateObj = new Date(<%= expired_at %>);
+
+      var year = dateObj.getFullYear();
+      var month = dateObj.getMonth()+1;
+      var date = dateObj.getDate();
+
+      var hours = dateObj.getHours();
+      var minutes = dateObj.getMinutes();
+      var seconds = dateObj.getSeconds();
+
+      var SLASH = '/';
+      var COLON = ':';
+      var SPACE = ' ';
+
+      var due = month + SLASH + date + SLASH + year + SPACE + hours + COLON + minutes + COLON + seconds;
+
+      console.log(due);
+      $('#timer').downCount({
+          date: due,
+          offset: +10
+      }, function () {
+          alert('WOOT WOOT, done!');
+      });
+  </script>
 </section>
