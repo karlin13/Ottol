@@ -1,5 +1,7 @@
 # Ottol
 # ~~lottO~~
+## Demo
+https://karlin13.github.io/ottol
 
 ## 기능
 1. 고민 없이 로또를 사고 싶은 분들을 위해 랜덤으로 숫자 6개를 생성해줍니다.
